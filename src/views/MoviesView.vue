@@ -4,7 +4,7 @@ import api from '@/plugins/axios';
 import Loading from 'vue-loading-overlay';
 
 const getGenresName = (id) => genres.value.find((genre) => genre.id === id).name
-
+const formatDate = (date) => new Date(date).toLocaleDateString('pt-BR')
 const isLoading = ref(false)
 const genres = ref([]);
 const movies = ref([])
@@ -43,7 +43,7 @@ onMounted(async () => {
         <img :src="`https://image.tmdb.org/t/p/w500${movie.poster_path}`" :alt="movie.title" />
         <div class="movies-details">
           <p class="movie-title">{{ movie.title }}</p>
-          <p class="movie-release-date">{{ movie.release_date }}</p>
+          <p class="movie-release-date">{{ formatDate(movie.release_date)}}</p>
           <p class="movie-genres">
             <span
             v-for="genre_id in movie.genre_ids" :key="genre_id" @click="listMovies(genre_id)">
