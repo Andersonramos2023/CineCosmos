@@ -1,17 +1,22 @@
 @import './base.css';
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
+html{
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
+  line-height: 1.5;
 }
 
-body{
-  min-height: 100vh;
-   line-height: 1.6;
-  font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-    Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-  font-size: 15px;
-  text-rendering: optimizeLegibility;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  transition: background-color 0.3s;
+  transition: all 0.3s ease-in-out;
+  transition: background-color 0.3s ease-in-out;
 }
+
+body {
+  height: 100vh;
+  background: linear-gradient( to right, #000,  #000112);
+font-family: 'Inter', sans-serif;
+  color: white;}

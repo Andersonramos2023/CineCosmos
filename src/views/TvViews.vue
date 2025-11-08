@@ -44,35 +44,61 @@ onMounted(async () => {
 function openTv(tvId) {
   router.push({ name: 'tvDetails', params: { tvId } })
 }
+
+// controle manual do carrossel
+const scrollContainer = ref(null)
+const scroll = (direction) => {
+  const container = scrollContainer.value
+  if (!container) return
+  const scrollAmount = 250
+  container.scrollBy({
+    left: direction === 'left' ? -scrollAmount : scrollAmount,
+    behavior: 'smooth',
+  })
+}
 </script>
 
 <template>
   <div>
-    <h1>Gêneros de filmes</h1>
+    <h1>Gênero Filmes </h1>
 
-    <ul class="genre-list">
+    <div class="carousel-wrapper">
+      <button class="scroll-btn left" @click="scroll('left')">‹</button>
 
-      <li v-for="genre in genreStore.genres" :key="genre.id" @click="listtv(genre.id)" class="genre-item"
-        :class="{ active: genre.id === genreStore.currentGenreId }">
+      <ul class="genre-list" ref="scrollContainer">
+        <li
+          v-for="genre in genreStore.genres"
+          :key="genre.id"
+          @click="listtv(genre.id)"
+          class="genre-item"
+          :class="{ active: genre.id === genreStore.currentGenreId }"
+        >
+          {{ genre.name }}
+        </li>
+      </ul>
 
-        {{ genre.name }}
-      </li>
-    </ul>
+      <button class="scroll-btn right" @click="scroll('right')">›</button>
+    </div>
 
     <loading v-model:active="isLoading" is-full-page />
 
     <div class="tv-list">
       <div v-for="tv in tv" :key="tv.id" class="tv-card">
-
-        <img :src="`https://image.tmdb.org/t/p/w500${tv.poster_path}`" :alt="tv.title"
-          @click="openTv(tv.id)" />
-
+        <img
+          :src="`https://image.tmdb.org/t/p/w500${tv.poster_path}`"
+          :alt="tv.title"
+          @click="openTv(tv.id)"
+        />
         <div class="tv-details">
           <p class="tv-title">{{ tv.title }}</p>
           <p class="tv-release-date">{{ formatDate(tv.release_date) }}</p>
           <p class="tv-genres">
-            <span v-for="genre_id in tv.genre_ids" :key="genre_id" @click="listtv(genre_id)"
-              :class="{ active: genre_id === genreStore.currentGenreId }">
+            <span
+              v-for="genre_id in tv.genre_ids"
+              :key="genre_id"
+              @click="listtv(genre_id)"
+              :class="{ active: genre_id === genreStore.currentGenreId }"
+            >
               {{ genreStore.getGenreName(genre_id) }}
             </span>
           </p>
@@ -83,26 +109,78 @@ function openTv(tvId) {
 </template>
 
 <style scoped>
-.genre-list {
+h1{
+  padding-left: 10%;
+}
+.carousel-wrapper {
+  position: relative;
   display: flex;
+  align-items: center;
   justify-content: center;
-  flex-wrap: wrap;
-  gap: 2rem;
+  width: 90%;
+  margin: 2em auto;
+}
+
+.scroll-btn {
+  background: rgba(56, 114, 80, 0.9);
+  color: #fff;
+  border: none;
+  font-size: 2rem;
+  width: 60px;
+  height: 70px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 1s;
+  z-index: 2;
+}
+
+.scroll-btn:hover {
+  background: #4e9e5f;
+}
+
+.scroll-btn.left {
+  margin-right: 10px;
+}
+
+.scroll-btn.right {
+  margin-left: 10px;
+}
+
+.genre-list {
+  overflow-x: auto;
+  display: flex;
+  gap: 1rem;
   list-style: none;
+  scroll-behavior: smooth;
   padding: 0;
+  margin: 0;
+}
+
+.genre-list::-webkit-scrollbar {
+  display: none;
 }
 
 .genre-item {
+  align-content: center;
+  flex: 0 0 12em;
+  text-align: center;
   background-color: #387250;
   border-radius: 1rem;
-  padding: 0.5rem 1rem;
+  padding: 0.7rem;
   color: #000;
+  user-select: none;
+  transition: 0.3s;
 }
 
 .genre-item:hover {
   cursor: pointer;
   background-color: #4e9e5f;
   box-shadow: 0 0 0.5rem #387250;
+}
+
+.active {
+  background-color: #67b086;
+  font-weight: bolder;
 }
 
 .tv-list {
@@ -156,11 +234,6 @@ function openTv(tvId) {
   cursor: pointer;
   background-color: #455a08;
   box-shadow: 0 0 0.5rem #748708;
-}
-
-.active {
-  background-color: #67b086;
-  font-weight: bolder;
 }
 
 .tv-genres span.active {
