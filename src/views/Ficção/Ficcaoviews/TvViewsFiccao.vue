@@ -4,6 +4,7 @@ import api from '@/plugins/axios'
 import { useGenreStore } from '@/stores/genre'
 import Loading from 'vue-loading-overlay'
 import { useRouter } from 'vue-router'
+import HomeFiccaoViws from '../HomeFiccaoViws.vue'
 
 const router = useRouter()
 const genreStore = useGenreStore()
@@ -59,6 +60,7 @@ const scroll = (direction) => {
 </script>
 
 <template>
+  <HomeFiccaoViws>
   <div>
     <h1>Gênero Filmes </h1>
 
@@ -106,12 +108,14 @@ const scroll = (direction) => {
       </div>
     </div>
   </div>
+  </HomeFiccaoViws>
 </template>
 
 <style scoped>
 h1{
   padding-left: 10%;
 }
+
 .carousel-wrapper {
   position: relative;
   display: flex;
@@ -122,7 +126,7 @@ h1{
 }
 
 .scroll-btn {
-  background: rgba(56, 114, 80, 0.9);
+  background: #C81D1D; /* vermelho principal */
   color: #fff;
   border: none;
   font-size: 2rem;
@@ -135,7 +139,7 @@ h1{
 }
 
 .scroll-btn:hover {
-  background: #4e9e5f;
+  background: #9E1717; /* vermelho mais escuro */
 }
 
 .scroll-btn.left {
@@ -164,22 +168,22 @@ h1{
   align-content: center;
   flex: 0 0 12em;
   text-align: center;
-  background-color: #387250;
+  background-color: #C81D1D; /* fundo vermelho */
   border-radius: 1rem;
   padding: 0.7rem;
-  color: #000;
+  color: #fff;
   user-select: none;
   transition: 0.3s;
 }
 
 .genre-item:hover {
   cursor: pointer;
-  background-color: #4e9e5f;
-  box-shadow: 0 0 0.5rem #387250;
+  background-color: #9E1717; /* hover vermelho escuro */
+  box-shadow: 0 0 0.5rem #7F0E0E; /* sombra vermelha */
 }
 
 .active {
-  background-color: #67b086;
+  background-color: #F24D4D; /* vermelho claro para destaque */
   font-weight: bolder;
 }
 
@@ -192,11 +196,11 @@ h1{
 }
 
 .tv-card {
-  width: 200px;
+  width: 210px;
   text-align: center;
   border-radius: 1rem;
   overflow: hidden;
-  box-shadow: 0 0 0.5rem #ccc;
+  box-shadow: 0 0 0.5rem #7F0E0E; /* sombra vermelha */
   transition: transform 0.3s;
 }
 
@@ -206,7 +210,7 @@ h1{
 
 .tv-card img {
   width: 100%;
-  border-bottom: 2px solid #387250;
+  border-bottom: 2px solid #C81D1D; /* linha vermelha */
 }
 
 .tv-title {
@@ -218,11 +222,11 @@ h1{
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 0.3rem;
+  gap: 0.4rem;
 }
 
 .tv-genres span {
-  background-color: #748708;
+  background-color: #9E1717;
   border-radius: 0.5rem;
   padding: 0.2rem 0.5rem;
   color: #fff;
@@ -232,13 +236,14 @@ h1{
 
 .tv-genres span:hover {
   cursor: pointer;
-  background-color: #455a08;
-  box-shadow: 0 0 0.5rem #748708;
+  background-color: #7F0E0E;
+  box-shadow: 0 0 0.5rem #9E1717;
 }
 
 .tv-genres span.active {
-  background-color: #abc322;
+  background-color: #F24D4D; /* destaque vermelho claro */
   color: #000;
   font-weight: bolder;
 }
+
 </style>

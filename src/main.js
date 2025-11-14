@@ -1,4 +1,6 @@
 import './assets/main.css'
+import './views/Ficção/ficcao.css'
+import './views/Todos/todos.css'
 import 'vue-loading-overlay/dist/css/index.css'
 
 import { createApp } from 'vue'

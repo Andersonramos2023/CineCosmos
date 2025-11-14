@@ -1,0 +1,42 @@
+
+.linhaFundo {
+  position: fixed;
+  top: -75vw;
+  left: 35vw;
+  width: 50vw;
+  height: 350vh;
+  z-index: -1;
+  transform: rotate(50deg);
+  background-color: #00ff44;
+  opacity: 0.6;
+  mask-image: linear-gradient(
+    to right,
+    transparent 1%,
+    black 50%,
+    black 50%,
+    transparent 85%
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 5%,
+    black 50%,
+    black 50%,
+    transparent 85%
+  );
+  animation: brilhoConstante 5s ease-in-out infinite;
+  filter: blur(10px);
+}
+@keyframes brilhoConstante {
+  0% {
+    opacity: 0.6;
+    filter: blur(5%);
+  }
+  50% {
+    opacity: 0.9;
+    filter: blur(12%);
+  }
+  100% {
+    opacity: 0.6;
+    filter: blur(2%);
+  }
+}

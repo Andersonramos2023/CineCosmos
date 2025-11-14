@@ -1,5 +1,6 @@
 import {createRouter, createWebHistory } from 'vue-router'
-import HomeViws from '@/views/HomeViws.vue';
+import HomeViws from '@/views/Todos/HomeViws.vue';
+import HomeFiccaoViws from '@/views/Ficção/HomeFiccaoViws.vue';
 
 const routes =
 [
@@ -9,14 +10,30 @@ name: 'Home',
 component: HomeViws
 },
 {
-path: '/Filmes',
-name: 'Moves',
-component: () => import('../views/MoviesView.vue')
-},
-{
 path: '/tv',
 name:'TV',
-component: () => import('../views/TvViews.vue')
+component: () => import('../views/Todos/TvViews.vue')
+},
+{
+
+path: '/inicioTodos',
+name: 'IncioTodos',
+component: () => import('../views/Todos/InicioTodos.vue')
+},
+{
+path: '/inicioFiccao',
+name: 'IncioFiccao',
+component: () => import('../views/Ficção/Ficcaoviews/InicioFiccao.vue')
+},
+{
+path: '/Ficcao',
+name: 'HomeFiccao',
+component: HomeFiccaoViws
+},
+{
+path: '/tvficcao',
+name:'TVFiccao',
+component: () => import('../views/Ficção/Ficcaoviews/TvViewsFiccao.vue')
 },
 ];
 
