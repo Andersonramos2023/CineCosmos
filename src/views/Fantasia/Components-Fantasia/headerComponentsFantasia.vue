@@ -9,11 +9,11 @@ const trocaDeGenero = ref(false)
 <template>
   <header class="headerCosmos">
 
-  <router-link to="/inicioFiccao"> <h1>Cine<span>Cosmos</span></h1></router-link>
+  <router-link to="/inicioFantasia"> <h1>Cine<span>Cosmos</span></h1></router-link>
 
     <ul>
       <li>
-        <router-link to="/inicioFiccao" class="icon-link">
+        <router-link to="/inicioFantasia" class="icon-link">
           <ion-icon name="home-outline"></ion-icon>
         </router-link>
       </li>
@@ -31,7 +31,7 @@ const trocaDeGenero = ref(false)
           </ul>
         </div>
          <li>
-        <router-link to="/tvficcao" class="icon-link">
+        <router-link to="/tvFantasia" class="icon-link">
           <ion-icon name="tv-outline"></ion-icon>
         </router-link>
       </li>
@@ -50,8 +50,7 @@ const trocaDeGenero = ref(false)
 
 </template>
 
-<style scoped>
-.generosFilmes {
+<style scoped>.generosFilmes {
   position: absolute;
   display: inline-flex; /* importante: impede que o flex ocupe o espaço total */
   flex-direction: column;
@@ -61,12 +60,11 @@ const trocaDeGenero = ref(false)
   left: 40vw;
   background-color: #ccc;
   border-radius: 10px;
-  box-shadow: 0 2px 10px #e7060633;
+  box-shadow: 0 2px 10px #00D4C933; /* antes: #e7060633 */
   z-index: 10;
   padding: 10px 10px; /* deixa o texto respirar */
   animation: aparecer 0.25s linear;
 }
-
 
 .generosFilmes ul {
   list-style: none;
@@ -76,13 +74,12 @@ const trocaDeGenero = ref(false)
 }
 
 .generosFilmes li {
-margin: 2px 0px;
-padding: 4px 8px;
-line-height: 1.1px;
+  margin: 2px 0px;
+  padding: 4px 8px;
+  line-height: 1.1px;
 }
 
 .generosFilmes a {
-
   color: #000;
   text-decoration: none;
   transition: color 0.2s;
@@ -91,6 +88,7 @@ line-height: 1.1px;
 .headerCosmos a{
   text-decoration: none;
 }
+
 .headerCosmos {
   width: 45vw;
   height: 60px;
@@ -111,7 +109,7 @@ line-height: 1.1px;
 }
 
 .headerCosmos h1 span {
-  color: #e70606;
+  color: #00D4C9; /* antes: #e70606 */
   font-size: 0.6em;
 }
 
@@ -129,7 +127,7 @@ line-height: 1.1px;
 }
 
 .icon-link {
-  color: #e70606;
+  color: #00D4C9; /* antes: #e70606 */
   font-size: 22px;
   display: flex;
   align-items: center;
@@ -140,12 +138,11 @@ line-height: 1.1px;
 .icon-link:hover {
   transform: scale(1.5);
   color: #fff;
-  border-bottom: solid 1.5px #e70606;
+  border-bottom: solid 1.5px #00D4C9; /* antes: #e70606 */
 }
 
-
 .icon-link-troca {
-  color: #e70606;
+  color: #00D4C9; /* antes: #e70606 */
   font-size: 22px;
   display: flex;
   align-items: center;
@@ -156,7 +153,7 @@ line-height: 1.1px;
 .icon-link-troca:hover {
   transform: scale(1.5);
   color: #fff;
-  border-bottom: solid 1.5px #452727;
+  border-bottom: solid 1.5px #004F4C; /* antes: #452727 vermelho escuro */
 }
 
 .pesquisa input {
@@ -200,4 +197,5 @@ button {
     transform: scale(1);
   }
 }
+
 </style>

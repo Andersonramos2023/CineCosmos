@@ -1,5 +1,5 @@
 
-.linhaFundoFiccao {
+.linhaFundoFantasia {
   position: fixed;
   top: -75vw;
   left: 35vw;
@@ -7,7 +7,7 @@
   height: 350vh;
   z-index: -1;
   transform: rotate(50deg);
-  background-color: #ff0000;
+  background-color: #00D4C9;
   opacity: 0.6;
   mask-image: linear-gradient(
     to right,
@@ -23,20 +23,22 @@
     black 50%,
     transparent 85%
   );
-  animation: brilhoConstante 6s ease-in infinite;
-  filter: blur(12px);
+  animation: brilhoConstante 6s ease-in-out infinite;
+  filter: blur(10px);
 }
+
 @keyframes brilhoConstante {
   0% {
-    opacity: 1;
-    filter: blur(8%);
+    opacity: 0.6;
+    filter: blur(6%);
   }
   50% {
     opacity: 0.9;
-    filter: blur(18);
+    filter: blur(18%);
   }
   100% {
     opacity: 0.6;
-    filter: blur(2%);
+    filter: blur(6%);
   }
+
 }

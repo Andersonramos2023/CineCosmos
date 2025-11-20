@@ -1,25 +1,46 @@
 import {createRouter, createWebHistory } from 'vue-router'
-import HomeViws from '@/views/Todos/HomeViws.vue';
+import InicioTodos from '@/views/Todos/InicioTodos.vue';
 import HomeFiccaoViws from '@/views/Ficção/HomeFiccaoViws.vue';
+import HomeFantasia from '@/views/Fantasia/HomeFantasia.vue';
 
 const routes =
 [
+
+
+
+//////////////////////////////
+
+   /*     TODOS        */
+
+//////////////////////////////
 {
-path: '/',
-name: 'Home',
-component: HomeViws
+  path:'/tv/:tvId',
+  name:'tvDetails',
+  component: () => import('@/views/Todos/TvDetailsView.vue'), props: true,
 },
 {
-path: '/tv',
-name:'TV',
-component: () => import('../views/Todos/TvViews.vue')
+  path: '/tv',
+  name:'TV',
+  component: () => import('../views/Todos/TvViews.vue')
 },
 {
 
-path: '/inicioTodos',
+path: '/',
 name: 'IncioTodos',
-component: () => import('../views/Todos/InicioTodos.vue')
+component: InicioTodos
 },
+
+
+//////////////////////////////
+
+   /*     FICÇÃO        */
+
+//////////////////////////////
+  {
+    path:'/tv/:tvId',
+    name:'tvDetailsFiccao',
+    component: () => import('@/views/Ficção/Ficcaoviews/TvDetailsFiccaoView.vue'), props: true,
+  },
 {
 path: '/inicioFiccao',
 name: 'IncioFiccao',
@@ -35,6 +56,34 @@ path: '/tvficcao',
 name:'TVFiccao',
 component: () => import('../views/Ficção/Ficcaoviews/TvViewsFiccao.vue')
 },
+
+//////////////////////////////
+
+   /*     FANTASIA        */
+
+//////////////////////////////
+
+ {
+    path:'/tv/:tvId',
+    name:'tvDetailsFantasia',
+    component: () => import('@/views/Fantasia/Fantasiaviews/TvDetailsFantasiaView.vue'), props: true,
+  },
+{
+path: '/inicioFantasia',
+name: 'IncioFantasia',
+component: () => import('../views/Fantasia/Fantasiaviews/InicioFantasia.vue')
+},
+{
+path: '/fantasia',
+name: 'HomeFantasia',
+component: HomeFantasia
+},
+{
+path: '/tvFantasia',
+name:'TVFantasia',
+component: () => import('../views/Fantasia/Fantasiaviews/TvViewsFantasia.vue')
+},
+
 ];
 
 const router = createRouter({

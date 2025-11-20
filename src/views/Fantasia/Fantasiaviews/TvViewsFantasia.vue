@@ -4,7 +4,7 @@ import api from '@/plugins/axios'
 import { useGenreStore } from '@/stores/genre'
 import Loading from 'vue-loading-overlay'
 import { useRouter } from 'vue-router'
-import HomeFiccaoViws from '../HomeFiccaoViws.vue'
+import HomeFantasia from '../HomeFantasia.vue'
 
 const router = useRouter()
 const genreStore = useGenreStore()
@@ -43,7 +43,7 @@ onMounted(async () => {
 })
 
 function openTv(tvId) {
-  router.push({ name: 'tvDetailsFiccao', params: { tvId } })
+  router.push({ name: 'tvDetailsFantasia', params: { tvId } })
 }
 
 // controle manual do carrossel
@@ -60,7 +60,7 @@ const scroll = (direction) => {
 </script>
 
 <template>
-  <HomeFiccaoViws>
+  <HomeFantasia>
   <div>
     <h1>Gênero Filmes </h1>
 
@@ -108,11 +108,10 @@ const scroll = (direction) => {
       </div>
     </div>
   </div>
-  </HomeFiccaoViws>
+  </HomeFantasia>
 </template>
 
-<style scoped>
-h1{
+<style scoped>h1{
   padding-left: 10%;
 }
 
@@ -126,7 +125,7 @@ h1{
 }
 
 .scroll-btn {
-  background: #C81D1D; /* vermelho principal */
+  background: #00D4C9; /* antes: #C81D1D */
   color: #fff;
   border: none;
   font-size: 2rem;
@@ -139,7 +138,7 @@ h1{
 }
 
 .scroll-btn:hover {
-  background: #9E1717; /* vermelho mais escuro */
+  background: #00B3AD; /* antes: #9E1717 (vermelho escuro) */
 }
 
 .scroll-btn.left {
@@ -168,22 +167,22 @@ h1{
   align-content: center;
   flex: 0 0 12em;
   text-align: center;
-  background-color: #C81D1D; /* fundo vermelho */
+  background-color: #00D4C9; /* antes: #C81D1D */
   border-radius: 1rem;
   padding: 0.7rem;
-  color: #fff;
+  color: #000;
   user-select: none;
   transition: 0.3s;
 }
 
 .genre-item:hover {
   cursor: pointer;
-  background-color: #9E1717; /* hover vermelho escuro */
-  box-shadow: 0 0 0.5rem #7F0E0E; /* sombra vermelha */
+  background-color: #00B3AD; /* antes: #9E1717 */
+  box-shadow: 0 0 0.5rem #008E88; /* antes: #7F0E0E */
 }
 
 .active {
-  background-color: #F24D4D; /* vermelho claro para destaque */
+  background-color: #4DF2E9; /* antes: #F24D4D (vermelho claro) */
   font-weight: bolder;
 }
 
@@ -200,7 +199,7 @@ h1{
   text-align: center;
   border-radius: 1rem;
   overflow: hidden;
-  box-shadow: 0 0 0.5rem #7F0E0E; /* sombra vermelha */
+  box-shadow: 0 0 0.5rem #008E88; /* antes: #7F0E0E */
   transition: transform 0.3s;
 }
 
@@ -210,7 +209,7 @@ h1{
 
 .tv-card img {
   width: 100%;
-  border-bottom: 2px solid #C81D1D; /* linha vermelha */
+  border-bottom: 2px solid #00D4C9; /* antes: #C81D1D */
 }
 
 .tv-title {
@@ -226,7 +225,7 @@ h1{
 }
 
 .tv-genres span {
-  background-color: #9E1717;
+  background-color: #00B3AD; /* antes: #9E1717 */
   border-radius: 0.5rem;
   padding: 0.2rem 0.5rem;
   color: #fff;
@@ -236,14 +235,16 @@ h1{
 
 .tv-genres span:hover {
   cursor: pointer;
-  background-color: #7F0E0E;
-  box-shadow: 0 0 0.5rem #9E1717;
+  background-color: #008E88; /* antes: #7F0E0E */
+  box-shadow: 0 0 0.5rem #00B3AD; /* antes: #9E1717 */
 }
 
 .tv-genres span.active {
-  background-color: #F24D4D; /* destaque vermelho claro */
+  background-color: #4DF2E9; /* antes: #F24D4D */
   color: #000;
   font-weight: bolder;
 }
+
+
 
 </style>

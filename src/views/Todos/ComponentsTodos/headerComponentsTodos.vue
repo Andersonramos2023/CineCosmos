@@ -9,11 +9,11 @@ const trocaDeGenero = ref(false)
 <template>
   <header class="headerCosmos">
 
-  <router-link to="/inicioTodos"> <h1>Cine<span>Cosmos</span></h1></router-link>
+  <router-link to="/"> <h1>Cine<span>Cosmos</span></h1></router-link>
 
     <ul>
       <li>
-        <router-link to="/inicioTodos" class="icon-link">
+        <router-link to="/" class="icon-link">
           <ion-icon name="home-outline"></ion-icon>
         </router-link>
       </li>
@@ -25,9 +25,9 @@ const trocaDeGenero = ref(false)
 
         <div class="generosFilmes" v-if="trocaDeGenero">
           <ul>
-            <li><router-link to="/inicioTodos">Todos</router-link></li>
+            <li><router-link to="/">Todos</router-link></li>
             <li><router-link to="/inicioFiccao">Ficção Científica</router-link></li>
-            <li><router-link to="/fantasia">Fantasia</router-link></li>
+            <li><router-link to="/inicioFantasia">Fantasia</router-link></li>
           </ul>
         </div>
          <li>

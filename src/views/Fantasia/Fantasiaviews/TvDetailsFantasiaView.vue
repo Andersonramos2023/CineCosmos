@@ -1,7 +1,7 @@
 <script setup>
+import HomeFantasia from '../HomeFantasia.vue';
   import { defineProps, onMounted } from 'vue';
   import { useTvStore } from '@/stores/Tv';
-  import HomeViws from './HomeViws.vue';
   const tvStore = useTvStore();
 
   const props = defineProps({
@@ -17,8 +17,8 @@
 </script>
 
 <template>
-  <HomeViws>
-      <div class="main">
+  <HomeFantasia>
+  <div class="main">
     <div class="content">
 
       <img
@@ -50,8 +50,7 @@
       <p v-else>{{ company.name }}</p>
     </template>
   </div>
-  </HomeViws>
-
+  </HomeFantasia>
 </template>
 
 <style scoped>
