@@ -27,7 +27,7 @@ import HomeAventuraViws from '../HomeAventuraViws.vue';
       />
 
       <div class="details">
-        <h1>Filme: {{ tvStore.currentTv.title }}</h1>
+        <h1>Série: {{ tvStore.currentTv.title }}</h1>
         <p>{{ tvStore.currentTv.tagline }}</p>
         <p>{{ tvStore.currentTv.overview }}</p>
         <p>Orçamento: ${{ tvStore.currentTv.budget }}</p>
@@ -54,11 +54,76 @@ import HomeAventuraViws from '../HomeAventuraViws.vue';
 </template>
 
 <style scoped>
-  .companies {
-    display: flex;
-    flex-direction: row;
-    column-gap: 3rem;
-    align-items: center;
-    margin-bottom: 2rem;
-  }
+
+.main {
+  display: flex;
+  justify-content: center;
+  padding: 40px 0;
+}
+
+.content {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+  padding: 20px;
+  border-radius: 12px;
+  background:transparent;
+  box-shadow: 0 0 15px #eb0000;
+ transition: 1s ease-in-out;
+}
+.content img{
+  border-radius: 20px;
+}
+.content:hover {
+ transform: scale(1.1);
+
+}
+.imagemI {
+  width: 280px;        
+  border-radius: 20px;
+  box-shadow: 0 0 10px #520202;
+  transform: scale(1);
+}
+
+.details {
+  color: white;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.details h1 {
+  font-size: 32px;
+  margin: 0;
+  color: #ffff;
+}
+
+.details p {
+  opacity: 0.9;
+  line-height: 1.4rem;
+}
+
+/* ----- PRODUTORAS ----- */
+
+.companies {
+  margin-top: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
+  padding-bottom: 40px;
+}
+
+.companies img {
+  height: 40px !important;
+  filter: brightness(0) invert(2); 
+  opacity: 0.8;
+  transition: 0.2s;
+}
+
+.companies img:hover {
+  opacity: 1;
+
+}
+
 </style>

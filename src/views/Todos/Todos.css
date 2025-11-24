@@ -28,15 +28,15 @@
 }
 @keyframes brilhoConstante {
   0% {
-    opacity: 0.6;
-    filter: blur(5%);
+    opacity: 0.5;
+    filter: blur(6px);
   }
   50% {
-    opacity: 0.9;
-    filter: blur(12%);
+    opacity: 0.8;
+    filter: blur(18px);
   }
   100% {
-    opacity: 0.6;
-    filter: blur(2%);
+    opacity: 0.5;
+    filter: blur(6px);
   }
 }
