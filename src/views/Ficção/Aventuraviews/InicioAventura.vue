@@ -1,6 +1,6 @@
 <script setup>
 import { onMounted } from "vue";
-import HomeTodosViws from "../Todos/HomeViws.vue";
+import HomeHomeAventuraViws from "../HomeAventuraViws.vue";
 onMounted(() => {
   const loader = document.querySelector(".loader");
   const texto = document.querySelector(".texto");
@@ -24,7 +24,8 @@ onMounted(() => {
 });
 </script>
 
-<template> <HomeTodosViws>
+<template>
+<HomeHomeAventuraViws>
 
 <div class="texto">Cine<span>Cosmos</span></div>
 
@@ -33,7 +34,7 @@ onMounted(() => {
     <div class="dot dot2"></div>
     <div class="dot dot3"></div>
   </div>
-  </HomeTodosViws>
+  </HomeHomeAventuraViws>
 
 </template>
 

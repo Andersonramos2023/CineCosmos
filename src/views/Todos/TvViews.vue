@@ -19,7 +19,7 @@ const listtv = async (genreId) => {
   try {
     const response = await api.get('discover/tv', {
       params: {
-        with_genres: genreId,
+        with_genres:`10765 && 10759,${genreId}`,
         language: 'pt-BR',
       },
     })
@@ -43,7 +43,7 @@ onMounted(async () => {
 })
 
 function openTv(tvId) {
-  router.push({ name: 'tvDetails', params: { tvId } })
+  router.push({ name: 'tvDetailsTodos', params: { tvId } })
 }
 
 // controle manual do carrossel

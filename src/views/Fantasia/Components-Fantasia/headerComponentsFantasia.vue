@@ -1,8 +1,54 @@
 <script setup>
 
 import { ref } from 'vue';
+import axios from 'axios';
+import { useRouter } from 'vue-router';
 
-const trocaDeGenero = ref(false)
+
+const query = ref("");
+const tvs = ref([]);
+const router = useRouter()
+const trocaDeGenero = ref(false);
+
+
+
+const irParaResultados = () => {
+  if (query.value.trim() === "") return
+
+  router.push({
+    name: "resultado",
+    query: { q: query.value}
+  })
+}
+const TOKEN = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxY2RjNWUwYzU1YTNjMDJkMDQ2YmNkMTJlYWI3YTM0OSIsIm5iZiI6MTc1OTUxMjk5MC4yNiwic3ViIjoiNjhlMDA5OWVmZjlkOTllNGNlMTg5MTM4Iiwic2NvcGVzIjpbImFwaV9yZWFkIl0sInZlcnNpb24iOjF9.LJTzN7Qih5GOupppGmYJyady3AnjQP42wcIA3XdL2pc";
+
+const searchTv = async () => {
+  if (query.value.trim() === "") {
+    tvs.value = [];
+    return;
+  }
+
+  try {
+    const response = await axios.get(
+      "https://api.themoviedb.org/3/search/tv",
+      {
+        headers: {
+          Authorization: `Bearer ${TOKEN}`,
+          "Content-Type": "application/json;charset=utf-8",
+        },
+        params: {
+          query: query.value,
+          language: "pt-BR",
+        },
+      }
+    );
+
+    tvs.value = response.data.results;
+
+  } catch (error) {
+    console.error("Erro na busca:", error);
+  }
+};
 
 </script>
 
@@ -26,7 +72,7 @@ const trocaDeGenero = ref(false)
         <div class="generosFilmes" v-if="trocaDeGenero">
           <ul>
             <li><router-link to="/">Todos</router-link></li>
-            <li><router-link to="/inicioFiccao">Ficção Científica</router-link></li>
+            <li><router-link to="/inicioAventura">Aventura</router-link></li>
             <li><router-link to="/inicioFantasia">Fantasia</router-link></li>
           </ul>
         </div>
@@ -38,31 +84,46 @@ const trocaDeGenero = ref(false)
     </ul>
 
     <div class="pesquisa">
-      <button @click="buscar">
+      <button @click="searchTv">
         <span class="lupa">
           <ion-icon name="search-outline"></ion-icon>
         </span>
       </button>
-      <input type="text" placeholder="Buscar filme..." />
+
+      <input
+      v-model="query"
+      @keyup.enter="irParaResultados"
+      placeholder="Buscar filme..." />
+
+       <div v-if="tvs.length > 0">
+
+        <div v-for="t in tvs" :key="t.id">
+          {{ t.name }}
+        </div>
+
+       </div>
     </div>
+
   </header>
 
 
 </template>
 
-<style scoped>.generosFilmes {
+<style scoped>
+
+.generosFilmes {
   position: absolute;
   display: inline-flex; /* importante: impede que o flex ocupe o espaço total */
   flex-direction: column;
   align-items: flex-start; /* alinha o texto à esquerda */
   gap: 2px;
   top: 5.8vw;
-  left: 40vw;
+  left: 39.5vw;
   background-color: #ccc;
   border-radius: 10px;
   box-shadow: 0 2px 10px #00D4C933; /* antes: #e7060633 */
   z-index: 10;
-  padding: 10px 10px; /* deixa o texto respirar */
+  padding: 15px 10px; /* deixa o texto respirar */
   animation: aparecer 0.25s linear;
 }
 
@@ -153,7 +214,7 @@ const trocaDeGenero = ref(false)
 .icon-link-troca:hover {
   transform: scale(1.5);
   color: #fff;
-  border-bottom: solid 1.5px #004F4C; /* antes: #452727 vermelho escuro */
+  border-bottom: solid 1.5px #00D4C9; /* antes: #452727 vermelho escuro */
 }
 
 .pesquisa input {

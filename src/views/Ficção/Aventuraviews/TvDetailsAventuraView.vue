@@ -1,5 +1,5 @@
 <script setup>
-import HomeFiccaoViws from '../HomeFiccaoViws.vue';
+import HomeAventuraViws from '../HomeAventuraViws.vue';
   import { defineProps, onMounted } from 'vue';
   import { useTvStore } from '@/stores/Tv';
   const tvStore = useTvStore();
@@ -17,7 +17,7 @@ import HomeFiccaoViws from '../HomeFiccaoViws.vue';
 </script>
 
 <template>
-  <HomeFiccaoViws>
+  <HomeAventuraViws>
   <div class="main">
     <div class="content">
 
@@ -50,7 +50,7 @@ import HomeFiccaoViws from '../HomeFiccaoViws.vue';
       <p v-else>{{ company.name }}</p>
     </template>
   </div>
-  </HomeFiccaoViws>
+  </HomeAventuraViws>
 </template>
 
 <style scoped>

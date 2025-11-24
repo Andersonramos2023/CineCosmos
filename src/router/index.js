@@ -1,7 +1,8 @@
 import {createRouter, createWebHistory } from 'vue-router'
 import InicioTodos from '@/views/Todos/InicioTodos.vue';
-import HomeFiccaoViws from '@/views/Ficção/HomeFiccaoViws.vue';
+import HomeAventuraViws from '@/views/Ficção/HomeAventuraViws.vue';
 import HomeFantasia from '@/views/Fantasia/HomeFantasia.vue';
+
 
 const routes =
 [
@@ -14,10 +15,17 @@ const routes =
 
 //////////////////////////////
 {
-  path:'/tv/:tvId',
-  name:'tvDetails',
+  path:'/todos/tv/:tvId',
+  name:'tvDetailsTodos',
   component: () => import('@/views/Todos/TvDetailsView.vue'), props: true,
 },
+
+{
+path: '/pesquisaTodos',
+name:'resultadoTodos',
+component: () => import("../views/Todos/resultadoPesquisaTodos.vue")
+},
+
 {
   path: '/tv',
   name:'TV',
@@ -33,28 +41,35 @@ component: InicioTodos
 
 //////////////////////////////
 
-   /*     FICÇÃO        */
+   /*     Aventura        */
 
 //////////////////////////////
   {
-    path:'/tv/:tvId',
-    name:'tvDetailsFiccao',
-    component: () => import('@/views/Ficção/Ficcaoviews/TvDetailsFiccaoView.vue'), props: true,
+    path:'/aventura/tv/:tvId',
+    name:'tvDetailsAventura',
+    component: () => import('@/views/Ficção/Aventuraviews/TvDetailsAventuraView.vue'), props: true,
   },
+
 {
-path: '/inicioFiccao',
-name: 'IncioFiccao',
-component: () => import('../views/Ficção/Ficcaoviews/InicioFiccao.vue')
+path: '/pesquisaAventura',
+name:'resultadoAventura',
+component: () => import('../views/Ficção/Aventuraviews/resultadoPesquisaAventura.vue')
+},
+
+{
+path: '/inicioAventura',
+name: 'IncioAventura',
+component: () => import('../views/Ficção/Aventuraviews/InicioAventura.vue')
 },
 {
-path: '/Ficcao',
-name: 'HomeFiccao',
-component: HomeFiccaoViws
+path: '/Aventura',
+name: 'HomeAventura',
+component: HomeAventuraViws
 },
 {
-path: '/tvficcao',
-name:'TVFiccao',
-component: () => import('../views/Ficção/Ficcaoviews/TvViewsFiccao.vue')
+path: '/tvAventura',
+name:'TVAventura',
+component: () => import('../views/Ficção/Aventuraviews/TvViewsAventura.vue')
 },
 
 //////////////////////////////
@@ -64,7 +79,7 @@ component: () => import('../views/Ficção/Ficcaoviews/TvViewsFiccao.vue')
 //////////////////////////////
 
  {
-    path:'/tv/:tvId',
+    path:'/fantasia/tv/:tvId',
     name:'tvDetailsFantasia',
     component: () => import('@/views/Fantasia/Fantasiaviews/TvDetailsFantasiaView.vue'), props: true,
   },
@@ -82,6 +97,12 @@ component: HomeFantasia
 path: '/tvFantasia',
 name:'TVFantasia',
 component: () => import('../views/Fantasia/Fantasiaviews/TvViewsFantasia.vue')
+},
+
+{
+path: '/pesquisa',
+name:'resultado',
+component: () => import('../views/Fantasia/Fantasiaviews/resultadoPesquisaFantasia.vue')
 },
 
 ];

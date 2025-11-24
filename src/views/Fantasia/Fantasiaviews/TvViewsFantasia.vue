@@ -19,7 +19,7 @@ const listtv = async (genreId) => {
   try {
     const response = await api.get('discover/tv', {
       params: {
-        with_genres: genreId,
+        with_genres: `10765,${genreId}`,
         language: 'pt-BR',
       },
     })
@@ -42,8 +42,8 @@ onMounted(async () => {
   }
 })
 
-function openTv(tvId) {
-  router.push({ name: 'tvDetailsFantasia', params: { tvId } })
+function openTv(Id) {
+  router.push({ name: 'tvDetailsFantasia', params: { tvId : Id} })
 }
 
 // controle manual do carrossel
@@ -85,6 +85,7 @@ const scroll = (direction) => {
     <loading v-model:active="isLoading" is-full-page />
 
     <div class="tv-list">
+
       <div v-for="tv in tv" :key="tv.id" class="tv-card">
         <img
           :src="`https://image.tmdb.org/t/p/w500${tv.poster_path}`"
@@ -94,6 +95,7 @@ const scroll = (direction) => {
         <div class="tv-details">
           <p class="tv-title">{{ tv.title }}</p>
           <p class="tv-release-date">{{ formatDate(tv.release_date) }}</p>
+
           <p class="tv-genres">
             <span
               v-for="genre_id in tv.genre_ids"

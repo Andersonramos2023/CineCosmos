@@ -2,6 +2,7 @@
 import HomeFantasia from '../HomeFantasia.vue';
   import { defineProps, onMounted } from 'vue';
   import { useTvStore } from '@/stores/Tv';
+  
   const tvStore = useTvStore();
 
   const props = defineProps({

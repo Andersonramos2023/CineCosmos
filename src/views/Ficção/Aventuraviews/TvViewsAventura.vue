@@ -4,7 +4,7 @@ import api from '@/plugins/axios'
 import { useGenreStore } from '@/stores/genre'
 import Loading from 'vue-loading-overlay'
 import { useRouter } from 'vue-router'
-import HomeFiccaoViws from '../HomeFiccaoViws.vue'
+import HomeAventuraViws from '../HomeAventuraViws.vue'
 
 const router = useRouter()
 const genreStore = useGenreStore()
@@ -19,7 +19,7 @@ const listtv = async (genreId) => {
   try {
     const response = await api.get('discover/tv', {
       params: {
-        with_genres: genreId,
+        with_genres:` 10759,${genreId}`,
         language: 'pt-BR',
       },
     })
@@ -43,7 +43,7 @@ onMounted(async () => {
 })
 
 function openTv(tvId) {
-  router.push({ name: 'tvDetailsFiccao', params: { tvId } })
+  router.push({ name: 'tvDetailsAventura', params: { tvId } })
 }
 
 // controle manual do carrossel
@@ -60,7 +60,7 @@ const scroll = (direction) => {
 </script>
 
 <template>
-  <HomeFiccaoViws>
+  <HomeAventuraViws>
   <div>
     <h1>Gênero Filmes </h1>
 
@@ -108,7 +108,7 @@ const scroll = (direction) => {
       </div>
     </div>
   </div>
-  </HomeFiccaoViws>
+  </HomeAventuraViws>
 </template>
 
 <style scoped>

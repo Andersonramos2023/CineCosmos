@@ -1,19 +1,65 @@
 <script setup>
 
 import { ref } from 'vue';
+import axios from 'axios';
+import { useRouter } from 'vue-router';
 
-const trocaDeGenero = ref(false)
+
+const query = ref("");
+const tvs = ref([]);
+const router = useRouter()
+const trocaDeGenero = ref(false);
+
+
+
+const irParaResultados = () => {
+  if (query.value.trim() === "") return
+
+  router.push({
+    name: "resultadoAventura",
+    query: { q: query.value}
+  })
+}
+const TOKEN = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxY2RjNWUwYzU1YTNjMDJkMDQ2YmNkMTJlYWI3YTM0OSIsIm5iZiI6MTc1OTUxMjk5MC4yNiwic3ViIjoiNjhlMDA5OWVmZjlkOTllNGNlMTg5MTM4Iiwic2NvcGVzIjpbImFwaV9yZWFkIl0sInZlcnNpb24iOjF9.LJTzN7Qih5GOupppGmYJyady3AnjQP42wcIA3XdL2pc";
+
+const searchTv = async () => {
+  if (query.value.trim() === "") {
+    tvs.value = [];
+    return;
+  }
+
+  try {
+    const response = await axios.get(
+      "https://api.themoviedb.org/3/search/tv",
+      {
+        headers: {
+          Authorization: `Bearer ${TOKEN}`,
+          "Content-Type": "application/json;charset=utf-8",
+        },
+        params: {
+          query: query.value,
+          language: "pt-BR",
+        },
+      }
+    );
+
+    tvs.value = response.data.results;
+
+  } catch (error) {
+    console.error("Erro na busca:", error);
+  }
+};
 
 </script>
 
 <template>
   <header class="headerCosmos">
 
-  <router-link to="/inicioFiccao"> <h1>Cine<span>Cosmos</span></h1></router-link>
+  <router-link to="/inicioAventura"> <h1>Cine<span>Cosmos</span></h1></router-link>
 
     <ul>
       <li>
-        <router-link to="/inicioFiccao" class="icon-link">
+        <router-link to="/inicioAventura" class="icon-link">
           <ion-icon name="home-outline"></ion-icon>
         </router-link>
       </li>
@@ -26,25 +72,38 @@ const trocaDeGenero = ref(false)
         <div class="generosFilmes" v-if="trocaDeGenero">
           <ul>
             <li><router-link to="/">Todos</router-link></li>
-            <li><router-link to="/inicioFiccao">Ficção Científica</router-link></li>
+            <li><router-link to="/inicioAventura">Aventura</router-link></li>
             <li><router-link to="/inicioFantasia">Fantasia</router-link></li>
           </ul>
         </div>
          <li>
-        <router-link to="/tvficcao" class="icon-link">
+        <router-link to="/tvAventura" class="icon-link">
           <ion-icon name="tv-outline"></ion-icon>
         </router-link>
       </li>
     </ul>
 
     <div class="pesquisa">
-      <button @click="buscar">
+      <button @click="searchTv">
         <span class="lupa">
           <ion-icon name="search-outline"></ion-icon>
         </span>
       </button>
-      <input type="text" placeholder="Buscar filme..." />
+
+      <input
+      v-model="query"
+      @keyup.enter="irParaResultados"
+      placeholder="Buscar filme..." />
+
+       <div v-if="tvs.length > 0">
+
+        <div v-for="t in tvs" :key="t.id">
+          {{ t.name }}
+        </div>
+
+       </div>
     </div>
+
   </header>
 
 
@@ -156,7 +215,7 @@ line-height: 1.1px;
 .icon-link-troca:hover {
   transform: scale(1.5);
   color: #fff;
-  border-bottom: solid 1.5px #452727;
+  border-bottom: solid 1.5px #e70606;
 }
 
 .pesquisa input {
