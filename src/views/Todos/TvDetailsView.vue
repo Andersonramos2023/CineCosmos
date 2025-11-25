@@ -26,7 +26,7 @@
         :alt="tvStore.currentTv.title"
         class="imagemI"
       />
-      
+
       <div class="details">
 
         <h1>Série: {{ tvStore.currentTv.title }}</h1>
@@ -38,7 +38,7 @@
     </div>
   </div>
 
-  <p>Produtoras</p>
+  <p class="produtoras">Produtoras</p>
   <div class="companies">
     <template
       v-for="company in tvStore.currentTv.production_companies"
@@ -49,7 +49,7 @@
         :src="`https://image.tmdb.org/t/p/w92${company.logo_path}`"
         :alt="company.name"
       />
-      
+
       <p v-else>{{ company.name }}</p>
     </template>
   </div>
@@ -57,8 +57,11 @@
 
 </template>
 
-<style scoped>
-main{
+<style scoped>.produtoras{
+font-size: 30px;
+padding: 0 50px;
+}
+.main {
   display: flex;
   justify-content: center;
   padding: 40px 0;
@@ -71,21 +74,28 @@ main{
   padding: 20px;
   border-radius: 12px;
   background:transparent;
-  box-shadow: 0 0 15px #22c32a;
+  box-shadow: 0 0 15px #1dfa00;
  transition: 1s ease-in-out;
+ margin-bottom: 50px;
+ margin-top: 50px;
 }
 .content img{
   border-radius: 20px;
-  height: 20rem;
 }
 .content:hover {
  transform: scale(1.1);
 
+.imagemI {
+  height: 500px;
+  border-radius: 20px;
+  box-shadow: 0 0 10px #520202;
+  transform: scale(1);
+}
 }
 .imagemI {
-  width: 280px;        
+  width: 280px;
   border-radius: 20px;
-  box-shadow: 0 0 10px #208b26;
+  box-shadow: 0 0 10px #838102;
   transform: scale(1);
 }
 
@@ -98,7 +108,8 @@ main{
 }
 
 .details h1 {
-  font-size: 32px;
+
+  font-size: 35px;
   margin: 0;
   color: #ffff;
 }
@@ -111,7 +122,8 @@ main{
 /* ----- PRODUTORAS ----- */
 
 .companies {
-  margin-top: 40px;
+  margin-top: 50px;
+  padding: 0 40px;
   display: flex;
   flex-wrap: wrap;
   gap: 25px;
@@ -120,7 +132,7 @@ main{
 
 .companies img {
   height: 40px !important;
-  filter: brightness(0) invert(2); 
+  filter: brightness(0) invert(2);
   opacity: 0.8;
   transition: 0.2s;
 }

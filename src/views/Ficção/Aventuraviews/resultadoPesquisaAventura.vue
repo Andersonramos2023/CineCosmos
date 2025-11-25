@@ -130,7 +130,7 @@ h2{
 }
 
 .resultado-item {
-  width: 250px;
+  width: 270px;
   cursor: pointer;
   text-align: center;
 }

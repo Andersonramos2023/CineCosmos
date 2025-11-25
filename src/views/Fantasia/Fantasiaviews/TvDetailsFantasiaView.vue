@@ -2,7 +2,7 @@
 import HomeFantasia from '../HomeFantasia.vue';
   import { defineProps, onMounted } from 'vue';
   import { useTvStore } from '@/stores/Tv';
-  
+
   const tvStore = useTvStore();
 
   const props = defineProps({
@@ -37,7 +37,7 @@ import HomeFantasia from '../HomeFantasia.vue';
     </div>
   </div>
 
-  <p>Produtoras</p>
+  <p class="produtoras">Produtoras</p>
   <div class="companies">
     <template
       v-for="company in tvStore.currentTv.production_companies"
@@ -54,7 +54,13 @@ import HomeFantasia from '../HomeFantasia.vue';
   </HomeFantasia>
 </template>
 
-<style scoped>.main {
+<style scoped>
+
+.produtoras{
+font-size: 30px;
+padding: 0 50px;
+}
+.main {
   display: flex;
   justify-content: center;
   padding: 40px 0;
@@ -69,6 +75,9 @@ import HomeFantasia from '../HomeFantasia.vue';
   background:transparent;
   box-shadow: 0 0 15px #00D4C9;;
  transition: 1s ease-in-out;
+ margin-bottom: 50px;
+  margin-top: 50px;
+
 }
 .content img{
   border-radius: 20px;
@@ -79,7 +88,7 @@ import HomeFantasia from '../HomeFantasia.vue';
 
 }
 .imagemI {
-  width: 280px;        
+  width: 280px;
   border-radius: 20px;
   box-shadow: 0 0 10px #1b7c77;;
   transform: scale(1);
@@ -107,6 +116,9 @@ import HomeFantasia from '../HomeFantasia.vue';
 /* ----- PRODUTORAS ----- */
 
 .companies {
+
+  margin-top: 50px;
+  padding: 0 40px;
   margin-top: 40px;
   display: flex;
   flex-wrap: wrap;
@@ -116,7 +128,7 @@ import HomeFantasia from '../HomeFantasia.vue';
 
 .companies img {
   height: 40px !important;
-  filter: brightness(0) invert(2); 
+  filter: brightness(0) invert(2);
   opacity: 0.8;
   transition: 0.2s;
 }

@@ -24,6 +24,7 @@ import HomeAventuraViws from '../HomeAventuraViws.vue';
       <img
         :src="`https://image.tmdb.org/t/p/w185${tvStore.currentTv.poster_path}`"
         :alt="tvStore.currentTv.title"
+        class="imagemI"
       />
 
       <div class="details">
@@ -36,7 +37,8 @@ import HomeAventuraViws from '../HomeAventuraViws.vue';
     </div>
   </div>
 
-  <p>Produtoras</p>
+  <p class="produtoras">Produtoras</p>
+
   <div class="companies">
     <template
       v-for="company in tvStore.currentTv.production_companies"
@@ -55,6 +57,11 @@ import HomeAventuraViws from '../HomeAventuraViws.vue';
 
 <style scoped>
 
+
+.produtoras{
+font-size: 30px;
+padding: 0 50px;
+}
 .main {
   display: flex;
   justify-content: center;
@@ -70,6 +77,8 @@ import HomeAventuraViws from '../HomeAventuraViws.vue';
   background:transparent;
   box-shadow: 0 0 15px #eb0000;
  transition: 1s ease-in-out;
+ margin-bottom: 50px;
+ margin-top: 50px;
 }
 .content img{
   border-radius: 20px;
@@ -79,7 +88,7 @@ import HomeAventuraViws from '../HomeAventuraViws.vue';
 
 }
 .imagemI {
-  width: 280px;        
+  height: 400px;
   border-radius: 20px;
   box-shadow: 0 0 10px #520202;
   transform: scale(1);
@@ -94,7 +103,8 @@ import HomeAventuraViws from '../HomeAventuraViws.vue';
 }
 
 .details h1 {
-  font-size: 32px;
+
+  font-size: 35px;
   margin: 0;
   color: #ffff;
 }
@@ -107,7 +117,8 @@ import HomeAventuraViws from '../HomeAventuraViws.vue';
 /* ----- PRODUTORAS ----- */
 
 .companies {
-  margin-top: 40px;
+  margin-top: 50px;
+  padding: 0 40px;
   display: flex;
   flex-wrap: wrap;
   gap: 25px;
@@ -116,7 +127,7 @@ import HomeAventuraViws from '../HomeAventuraViws.vue';
 
 .companies img {
   height: 40px !important;
-  filter: brightness(0) invert(2); 
+  filter: brightness(0) invert(2);
   opacity: 0.8;
   transition: 0.2s;
 }

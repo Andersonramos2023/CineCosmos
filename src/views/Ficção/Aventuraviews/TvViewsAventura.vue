@@ -139,7 +139,7 @@ h1{
 }
 
 .scroll-btn:hover {
-  background: #9E1717; /* vermelho mais escuro */
+  background: #9E1717; 
 }
 
 .scroll-btn.left {

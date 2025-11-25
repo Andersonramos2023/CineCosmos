@@ -106,8 +106,7 @@ h2{
 }
 
 
-.resultado-lista p, img  {
-
+.resultado-lista img  {
   margin-left: 100px;
   margin-top: 20px;
   width: 100%;
@@ -128,7 +127,7 @@ h2{
 }
 
 .resultado-item {
-  width: 250px;
+  width: 270px;
   cursor: pointer;
   text-align: center;
 }

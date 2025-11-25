@@ -117,8 +117,8 @@ const searchTv = async () => {
   flex-direction: column;
   align-items: flex-start; /* alinha o texto à esquerda */
   gap: 2px;
-  top: 5.8vw;
-  left: 39.5vw;
+  top: 3.9vw;
+  left: 44vw;
   background-color: #ccc;
   border-radius: 10px;
   box-shadow: 0 2px 10px #00D4C933; /* antes: #e7060633 */
@@ -151,12 +151,12 @@ const searchTv = async () => {
 }
 
 .headerCosmos {
-  width: 45vw;
+  width: 30vw;
   height: 60px;
   background-color: transparent;
   border: solid 1px #fff;
   margin: 35px auto;
-  margin-left: 28vw;
+  margin-left: 35vw;
   border-radius: 15px;
   display: flex;
   align-items: center;

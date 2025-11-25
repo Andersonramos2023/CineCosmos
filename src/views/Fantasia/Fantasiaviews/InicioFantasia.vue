@@ -41,10 +41,8 @@ onMounted(() => {
 <style scoped>
 /* conteúdo começa invisível */
 .texto {
-  position: fixed;
-  top: 20%;
-  left: 50%;
-  transform: translateX(-50%);
+  margin-top: 220px;
+  margin-left: 36vw;
   color: white;
   font-size: 4vw;
   font-weight: bold;
