@@ -3,6 +3,17 @@ import { ref, onMounted } from "vue";
 import api from "@/plugins/axios";
 import HomeTodosViws from "../Todos/HomeViws.vue";
 
+import { useRouter } from "vue-router";
+
+const router = useRouter();
+
+function openTv(tvId) {
+  router.push({
+    name: "tvDetailsTodos",
+    params: { tvId }
+  });
+}
+
 const isLoading = ref(false);
 
 // LISTAS
@@ -88,24 +99,33 @@ onMounted(() => {
     <!-- 🔥 Exemplo de exibição dos filmes -->
 
 
-    <h2>Aventuras</h2>
+    <h2>Venha se Aventurar!</h2>
+
     <div class="lista">
-      <div v-for="tv in aventuraTv" :key="tv.id" class="card">
-        <img :src="`https://image.tmdb.org/t/p/w500${tv.poster_path}`" />
+      <div v-for="tv in aventuraTv" :key="tv.id" class="card" >
+        <img
+        :src="`https://image.tmdb.org/t/p/w500${tv.poster_path}`"
+        @click="openTv( tv.id )"/>
+
       </div>
     </div>
 
-    <h2>Crime, Só os Melhores</h2>
+    <h2>Séries de Crimes</h2>
     <div class="lista">
       <div v-for="tv in crimeTv" :key="tv.id" class="card">
-        <img :src="`https://image.tmdb.org/t/p/w500${tv.poster_path}`" />
+        <img
+        :src="`https://image.tmdb.org/t/p/w500${tv.poster_path}`"
+        @click="openTv( tv.id )"
+        />
       </div>
     </div>
 
-    <h2>Drama + Terror</h2>
+    <h2>Só Brincadeiras </h2>
     <div class="lista">
       <div v-for="tv in dramaTv" :key="tv.id" class="card">
-        <img :src="`https://image.tmdb.org/t/p/w500${tv.poster_path}`" />
+        <img :src="`https://image.tmdb.org/t/p/w500${tv.poster_path}`"
+                @click="openTv( tv.id )"
+/>
       </div>
     </div>
 
@@ -113,13 +133,69 @@ onMounted(() => {
 </template>
 
 <style scoped>
-h2{
-    margin-top: 50px;
-    padding-left: 20px;
+h2 {
+  margin-top: 50px;
+  padding-left: 20px;
+  font-size: 2rem;
+  color: #fff;
+  font-weight: bold;
 }
+
+/* --------------------------- */
+/* LISTA CARROSSEL */
+.lista {
+  display: flex;
+  gap: 1.5rem;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 1rem;
+  white-space: thin;
+}
+
+.lista::-webkit-scrollbar {
+  height: 12px;
+}
+
+.lista::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 10px;
+}
+
+.lista::-webkit-scrollbar-thumb {
+  background: #387250;
+  border-radius: 10px;
+  border: 2px solid #1a1a1a;
+}
+
+.lista::-webkit-scrollbar-thumb:hover {
+  background: #4e9e5f;
+}
+
+/* --------------------------- */
+/* CARDS */
+.card {
+  flex: 0 0 auto;
+  width: 230px;
+  text-align: center;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 0 0.5rem #abc322;
+  transition: transform 0.3s;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card img {
+  width: 100%;
+  border-bottom: 2px solid #387250;
+  border-radius: 10px;
+}
+
 .texto {
   margin-top: 220px;
-  margin-left: 36vw;
+  margin-left: 40vw;
   color: white;
   font-size: 4vw;
   font-weight: bold;
@@ -153,41 +229,5 @@ h2{
   0% { transform: scale(0.4); opacity: .3; }
   40% { transform: scale(1.2); opacity: 1; }
   100% { transform: scale(0.4); opacity: .3; }
-}
-
-.lista {
-  display: flex;
-  gap: 1rem;
-  overflow-x: auto;
-  scroll-behavior: smooth;
-  padding: 1rem;
-  white-space: thin;
-}
-.lista::-webkit-scrollbar {
-  height: 12px;
-
-}
-
-.lista::-webkit-scrollbar-track {
-  background: transparent;
-  border-radius: 10px;
-
-}
-
-.lista::-webkit-scrollbar-thumb {
-  background: #387250;        /* cor da barra */
-  border-radius: 10px;
-  border: 2px solid #1a1a1a;  /* espaço ao redor (estiloso) */
-
-}
-
-.lista::-webkit-scrollbar-thumb:hover {
-  background: #4e9e5f;        /* cor quando passa o mouse */
-}
-
-.card img {
-  margin-bottom: 3vw;
-  width: 350px;
-  border-radius: 10px;
 }
 </style>

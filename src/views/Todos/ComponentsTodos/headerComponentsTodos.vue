@@ -151,12 +151,12 @@ line-height: 1.1px;
   text-decoration: none;
 }
 .headerCosmos {
-  width: 30vw;
+  width: 40vw;
   height: 60px;
   background-color: transparent;
   border: solid 1px #fff;
   margin: 35px auto;
-  margin-left: 35vw;
+  margin-left: 33vw;
   border-radius: 15px;
   display: flex;
   align-items: center;
@@ -227,6 +227,7 @@ line-height: 1.1px;
 }
 
 .pesquisa button {
+  margin-left:25px;
   border-bottom: 1px solid #fff;
   background-color: transparent;
   color: #fff;

@@ -29,7 +29,7 @@
 
       <div class="details">
 
-        <h1>Série: {{ tvStore.currentTv.title }}</h1>
+        <h1>Série: {{ tvStore.currentTv.name }}</h1>
         <p>{{ tvStore.currentTv.tagline }}</p>
         <p>{{ tvStore.currentTv.overview }}</p>
         <p>Orçamento: ${{ tvStore.currentTv.budget }}</p>
@@ -85,12 +85,6 @@ padding: 0 50px;
 .content:hover {
  transform: scale(1.1);
 
-.imagemI {
-  height: 500px;
-  border-radius: 20px;
-  box-shadow: 0 0 10px #520202;
-  transform: scale(1);
-}
 }
 .imagemI {
   width: 280px;
