@@ -151,12 +151,12 @@ line-height: 1.1px;
   text-decoration: none;
 }
 .headerCosmos {
-  width: 40vw;
+  width: 30vw;
   height: 60px;
   background-color: transparent;
   border: solid 1px #fff;
   margin: 35px auto;
-  margin-left: 33vw;
+  margin-left: 35vw;
   border-radius: 15px;
   display: flex;
   align-items: center;
@@ -245,7 +245,7 @@ input {
 
 button {
   border: none;
-  margin-left: 20px;
+  margin-left: 40px;
   margin-top: 0px;
 }
 

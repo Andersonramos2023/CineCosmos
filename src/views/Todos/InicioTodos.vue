@@ -195,7 +195,7 @@ h2 {
 
 .texto {
   margin-top: 220px;
-  margin-left: 40vw;
+  margin-left: 37.9vw;
   color: white;
   font-size: 4vw;
   font-weight: bold;

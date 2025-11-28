@@ -243,7 +243,7 @@ input {
 
 button {
   border: none;
-  margin-left: 20px;
+  margin-left: 40px;
   margin-top: 0px;
 }
 

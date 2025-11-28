@@ -11,7 +11,6 @@ const genreStore = useGenreStore()
 const isLoading = ref(false)
 const tv = ref([])
 
-const formatDate = (date) => new Date(date).toLocaleDateString('pt-BR')
 
 const listtv = async (genreId) => {
   genreStore.setCurrentGenreId(genreId)
@@ -92,8 +91,7 @@ const scroll = (direction) => {
           @click="openTv(tv.id)"
         />
         <div class="tv-details">
-          <p class="tv-title">{{ tv.title }}</p>
-          <p class="tv-release-date">{{ formatDate(tv.release_date) }}</p>
+          <p class="tv-title">{{ tv.name }}</p>
           <p class="tv-genres">
             <span
               v-for="genre_id in tv.genre_ids"
