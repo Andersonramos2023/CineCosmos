@@ -1,0 +1,44 @@
+
+.linhaFundoFantasia {
+  position: fixed;
+  top: -75vw;
+  left: 35vw;
+  width: 50vw;
+  height: 350vh;
+  z-index: -1;
+  transform: rotate(50deg);
+  background-color: #00D4C9;
+  opacity: 0.6;
+  mask-image: linear-gradient(
+    to right,
+    transparent 1%,
+    black 50%,
+    black 50%,
+    transparent 85%
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 5%,
+    black 50%,
+    black 50%,
+    transparent 85%
+  );
+  animation: brilhoConstante 6s ease-in-out infinite;
+  filter: blur(10px);
+}
+
+@keyframes brilhoConstante {
+  0% {
+    opacity: 0.5;
+    filter: blur(6px);
+  }
+  50% {
+    opacity: 0.9;
+    filter: blur(18px);
+  }
+  100% {
+    opacity: 0.5;
+    filter: blur(6px);
+  }
+
+}
